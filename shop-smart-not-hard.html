@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop smart, not hard · Julia Hamann-Zeit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dunkelgruen:#3a5e3f;
+    --gold:#c47b2b;
+    --creme:#faf6ef;
+    --schwarz:#1e1e1a;
+    --hellgruen:#eaf2eb;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--creme);
+    color:var(--schwarz);
+    font-family:'DM Sans', sans-serif;
+    padding:20px 14px 60px;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    color:var(--dunkelgruen);
+    font-size:28px;
+    margin:0 0 4px;
+    letter-spacing:0.2px;
+  }
+  .sub{
+    font-size:13px;
+    color:#6b6b62;
+    margin-bottom:20px;
+  }
+  .intro-text{
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--schwarz);
+    background:var(--hellgruen);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:16px;
+  }
+  .intro-hint{
+    font-size:12.5px;
+    line-height:1.5;
+    color:#8a8577;
+    font-style:italic;
+    margin-bottom:14px;
+  }
+  .section-divider{
+    text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--dunkelgruen);
+    margin:24px 0 4px;
+    padding-top:16px;
+    border-top:1px solid #e2ddd0;
+  }
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .group{
+    display:flex;
+    background:#fff;
+    border-radius:10px;
+    padding:4px;
+    border:1px solid #e2ddd0;
+    gap:3px;
+  }
+  .group button{
+    border:none;
+    background:transparent;
+    padding:8px 14px;
+    font-family:'DM Sans',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--dunkelgruen);
+    border-radius:7px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .group button.active{
+    background:var(--dunkelgruen);
+    color:#fff;
+  }
+  .group button.kombi-btn{
+    border:1.5px solid var(--gold);
+  }
+  .group button.kombi-btn.active{
+    border-color:var(--dunkelgruen);
+  }
+  .group-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#8a8577;
+    align-self:center;
+    padding-right:6px;
+  }
+  .canvas-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid #e2ddd0;
+    padding:8px 4px 4px;
+    overflow-x:auto;
+    margin-bottom:20px;
+  }
+  svg{display:block;margin:0 auto;}
+  .summary{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid #e2ddd0;
+    border-radius:12px;
+    padding:12px 14px;
+  }
+  .card .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:#8a8577;
+    margin-bottom:4px;
+  }
+  .card .value{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    color:var(--dunkelgruen);
+  }
+  .card.gold .value{color:var(--gold);}
+  .total-card{
+    background:var(--dunkelgruen);
+    color:var(--creme);
+    border-radius:14px;
+    padding:18px 18px;
+    margin-bottom:16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .total-card .t-label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    opacity:.8;
+  }
+  .total-card .t-value{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:34px;
+    color:var(--gold);
+  }
+  .footnote{
+    font-size:11.5px;
+    color:#8a8577;
+    line-height:1.5;
+    border-top:1px solid #e2ddd0;
+    padding-top:14px;
+    margin-top:6px;
+  }
+  .badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:600;
+    padding:3px 9px;
+    border-radius:20px;
+    background:var(--hellgruen);
+    color:var(--dunkelgruen);
+    margin-left:6px;
+  }
+  .legend{
+    display:flex;
+    gap:16px;
+    font-size:11px;
+    color:#6b6b62;
+    margin:10px 4px 0;
+    flex-wrap:wrap;
+  }
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .closing-card{
+    background:var(--gold);
+    color:var(--creme);
+    border-radius:14px;
+    padding:20px 20px 22px;
+    margin-bottom:16px;
+  }
+  .closing-headline{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    margin-bottom:10px;
+  }
+  .closing-text{
+    font-size:13.5px;
+    line-height:1.6;
+    opacity:0.96;
+  }
+  .closing-text strong{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:15.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Shop smart, not hard &mdash; Einkaufen mit Mehrwert</h1>
+  <div class="sub">Ein kleines Rechenspiel zum Ausprobieren</div>
+
+  <div class="intro-text">
+    Was wäre, wenn du fürs Einkaufen bezahlt würdest?!<br><br>
+    Okay, ganz so einfach ist es nicht, nur fürs Einkaufen gibt's kein Geld.<br>
+    Aber es gibt Firmen, die ihre Kunden am Umsatz beteiligen, ganz ohne Vertrag, ganz ohne Verpflichtung.<br><br>
+    Du bist einfach Kunde &mdash; und wirst am Umsatz beteiligt, der durch dich entsteht.<br><br>
+    Klingt nach "Kunden werben Kunden"?<br>
+    Jein, dort gibt's ein einmaliges Dankeschön.<br>
+    Und bei Payback sparst du nur auf künftige Einkäufe.<br>
+    Hier beim Empfehlungsmarketing bekommst du wirklich monatliche Umsatzbeteiligungen &mdash; bares Geld zur freien Verfügung, einfach durch Einkaufen und Erzählen.<br><br>
+    Probier's doch gleich aus, wie hoch deine Umsatzbeteiligung sein könnte!<br><br>
+    Welcher Bereich interessiert dich?<br>
+    Was bringt dir einen echten Mehrwert, wo würdest du gerne einkaufen?<br>
+    Unten kannst du schon mal ein paar Beispiele auswählen &mdash; im ganzen Sortiment gibt's natürlich noch viel, viel mehr.<br><br>
+    Und wechsle zusätzlich einfach zwischen den Buttons "3 Personen" und "6 Personen"<br>
+    und sieh dir den faszinierenden Unterschied an, was passiert, wenn entweder drei oder sechs Freunde durch deine Empfehlung einkaufen und sich das ebenso dupliziert!<br><br>
+    Natürlich ein hypothetisches Beispiel &mdash; aber genau darin steckt der besondere Zauber:<br>
+    Die Zahl der Menschen, die über deine direkte Empfehlung einkaufen, verdoppelt sich nur.<br>
+    Wenn sich diese Verdopplung aber von Ebene zu Ebene fortsetzt und sich die Einkäuferzahl dadurch insgesamt vervielfacht, beträgt die Umsatzbeteiligung am Ende deutlich mehr als nur das Doppelte.<br><br>
+    Klick dich einfach durch die Buttons, schau dir an, wie sich dein Einkaufsnetzwerk im Baumdiagramm unten verändert &mdash; und lass dich von den Zahlen überraschen.
+  </div>
+
+  <div class="controls">
+    <div style="text-align:center;width:100%;">
+      <div class="group" style="flex-wrap:wrap;justify-content:center;display:inline-flex;">
+        <button data-v="basics" class="vol-btn active">Wohlbefinden</button>
+        <button data-v="sport" class="vol-btn">Sport</button>
+        <button data-v="beauty" class="vol-btn">Schönheit</button>
+        <button data-v="kids" class="vol-btn">Kinder</button>
+        <button data-v="energie" class="vol-btn">Energie</button>
+        <button data-v="hausapo" class="vol-btn">Hausapotheke</button>
+      </div>
+    </div>
+    <div style="text-align:center;width:100%;margin-top:10px;">
+      <div class="group" style="justify-content:center;display:inline-flex;">
+        <button data-b="3" class="branch-btn active">3 Personen</button>
+        <button data-b="6" class="branch-btn">6 Personen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card gold" style="margin-bottom:16px;">
+    <div class="label" id="own-eyebrow">Beispielprodukt &middot; Wohlbefinden</div>
+    <div class="value" id="own-product-label">Aloe Vera Caps</div>
+    <div class="sub" id="own-benefit" style="margin-top:4px;font-size:13px;font-style:italic;color:#6b6b62;">Für dein Wohlbefinden von innen – dein Einstieg in die Basisversorgung</div>
+    <div class="sub" id="own-detail" style="margin-top:8px;font-size:13px;line-height:1.6;">40 IP · Produktpreis 53,25 €<br>+ Versand 4,17 €<br><strong>Dein Invest: 57,42 €</strong></div>
+    <div class="sub" style="margin-top:8px;font-size:12px;font-style:italic;color:#8a8577;">IP = Internationale Punkte, eine interne Verrechnungswährung für die Umsatzbeteiligung &mdash; unabhängig vom tatsächlichen Produktpreis, der bei gleicher IP-Zahl je nach Produkt leicht variieren kann.</div>
+    <div class="sub" style="margin-top:8px;font-size:12px;font-style:italic;color:#8a8577;">Annahme im Beispiel:<br>Alle im Freundeskreis bestellen das gleiche Produkt wie du.</div>
+  </div>
+
+  <div class="summary" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="label">Ebene 1</div>
+      <div class="value" id="l1-count">3 Partner</div>
+      <div class="sub" id="l1-detail" style="margin-top:2px;font-size:12px;"></div>
+    </div>
+    <div class="card">
+      <div class="label">Ebene 2</div>
+      <div class="value" id="l2-count">9 Partner</div>
+      <div class="sub" id="l2-detail" style="margin-top:2px;font-size:12px;"></div>
+    </div>
+    <div class="card">
+      <div class="label">Ebene 3</div>
+      <div class="value" id="l3-count">27 Partner</div>
+      <div class="sub" id="l3-detail" style="margin-top:2px;font-size:12px;"></div>
+    </div>
+  </div>
+
+  <div class="canvas-card">
+    <div style="text-align:center;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#8a8577;padding-top:6px;margin-bottom:4px;">Dein Einkaufsnetzwerk</div>
+    <svg id="tree"></svg>
+  </div>
+  <div class="legend">
+    <span><span class="dot" style="background:#c47b2b"></span>Du (Start)</span>
+    <span><span class="dot" style="background:#3a5e3f"></span>Ebene 1 &middot; 5%</span>
+    <span><span class="dot" style="background:#6f9a76"></span>Ebene 2 &middot; 25%</span>
+    <span><span class="dot" style="background:#b9d4bd"></span>Ebene 3 &middot; 10%</span>
+  </div>
+
+  <div class="total-card" style="justify-content:center;text-align:center;margin-top:20px;">
+    <div>
+      <div class="t-label">Deine Umsatzbeteiligung / Monat</div>
+      <div class="t-value" id="total-bonus">204 €</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;margin-bottom:16px;border-left:3px solid var(--gold);">
+    <div class="label">Und wenn die Einkaufsmenge steigt?</div>
+    <div style="font-size:13.5px;line-height:1.6;margin-top:6px;">
+      Als Produktliebhaber nutzt du vielleicht irgendwann mehrere Bereiche des Sortiments.<br>
+      Nehmen wir als Beispiel die Bereiche Wohlbefinden und Schönheit:<br>
+      Dann landest du bei 90 IP statt 40 oder 50 &mdash; macht 118,25 € Invest.<br><br>
+      Und wenn dein ganzes Einkaufsnetzwerk das genauso macht &mdash; rein hypothetisch, als Beispiel &mdash;, wächst auch die Umsatzbeteiligung linear mit:<br>
+      Bei 3 Personen werden aus 204 € dann 459 €,<br>
+      bei 6 Personen aus 1.236 € sogar 2.781 €.<br><br>
+      Und es gibt keine Obergrenze &mdash;<br>
+      weder bei der Anzahl der Menschen, die in deinem Einkaufsnetzwerk bestellen, noch bei der Menge, die sie bestellen.
+    </div>
+  </div>
+
+  <div class="closing-card" style="margin-top:20px;">
+    <div class="closing-headline">Bist du dabei?</div>
+    <div class="closing-text">
+      Schon mit weniger als 60 € Invest im Monat &mdash; mit den Aloe Vera Caps &mdash; sind im Beispiel mit 6er-Duplikation bis zu <strong>1.236 €</strong> Umsatzbeteiligung möglich.<br>
+      Minimaler Einsatz, maximaler Output.<br>
+      Einfach einkaufen mit Mehrwert.
+    </div>
+    <div class="closing-text" style="margin-top:12px;">
+      Du bekommst sofort echte Premiumprodukte &mdash; für Beauty, Sport, Hausapotheke oder die Kleinen,<br>
+      mit direktem Nutzen:<br>
+      Energieschub, gutes Hautgefühl, mehr Balance im Alltag.<br><br>
+      Und dazu, wenn dein Einkaufsnetzwerk wächst, jeden Monat eine Umsatzbeteiligung, über die du frei verfügst:<br>
+      sei es für den Extra-Urlaub, die neue Terrasse oder das Kürzen deiner Arbeitszeit.
+    </div>
+    <div class="closing-text" style="margin-top:12px;">
+      Worauf wartest du noch?<br>
+      Leg dir dein Kundenkonto an &mdash; und teil dein neues Wissen mit deinen Freunden, sodass auch sie von einem eigenen Einkaufsnetzwerk profitieren können!
+    </div>
+    <div class="closing-text" style="margin-top:16px;font-size:15px;">
+      <em>Shop smart, not hard</em> 😉
+    </div>
+  </div>
+
+  <div class="footnote">
+    Voraussetzung für eine Bonuszahlung: mind. 40 IP Eigenbestellung im jeweiligen Monat &mdash; keine Bestellpflicht. Nur in Monaten, in denen du selbst bestellst, bekommst du auch die Umsatzbeteiligung aus deinem Einkaufsnetzwerk; ohne eigene Bestellung entfällt sie für diesen Monat, im nächsten Monat mit Bestellung greift sie wieder. Modellrechnung, kein garantiertes Ergebnis: Sie unterstellt zusätzlich, dass wirklich jede Person in jeder Ebene der Downline aktiv bestellt und die Struktur sich vollständig dupliziert &mdash; das ist der Idealfall, nicht der Durchschnitt. 1 IP = 1 € (direkte Umrechnung). Bonus: Ebene 1 = 5%, Ebene 2 = 25%, Ebene 3 = 10% (Ebene-3-Bonus setzt 3 aktive Beine voraus). Versand: unter 80 IP pauschal 4,17 €, ab 80 IP kostenfrei. Preise Stand Mai 2026.
+  </div>
+</div>
+
+<script>
+const PRODUCTS = {
+  basics:  { label: 'Aloe Vera Caps',                ip: 40.00, price: 53.25, benefit: 'Ein Klassiker der Basisversorgung – seit Jahren geschätzt als sanfter Alltagsbegleiter', category: 'Wohlbefinden' },
+  sport:   { label: 'Be Focused',                    ip: 47.50, price: 76.00, benefit: 'Für Energie und Fokus in aktiven Trainingsphasen', category: 'Sport' },
+  beauty:  { label: 'FY Skin Formula',                ip: 50.00, price: 65.00, benefit: 'Für ein gepflegtes Hautbild von innen', category: 'Schönheit' },
+  kids:    { label: 'Yummies + mangOmega',            ip: 45.75, price: 83.00, benefit: 'Kindgerechte Nährstoffversorgung – lecker verpackt', category: 'Kinder' },
+  energie: { label: 'Smart Bar + Real NRG',           ip: 40.00, price: 79.00, benefit: 'Für den kleinen Energieschub im Alltag', category: 'Energie' },
+  hausapo: { label: 'Zinc Boost + Vitamin-C-Plus',    ip: 40.75, price: 78.50, benefit: 'Für deine Hausapotheke – gut gerüstet', category: 'Hausapotheke' }
+};
+
+const state = { b: 3, v: 'basics' };
+
+function ownCost(key){
+  const p = PRODUCTS[key];
+  const shipping = p.ip >= 80 ? 0 : 4.17;
+  return {product: p.price, shipping, total: p.price + shipping, ip: p.ip, label: p.label, benefit: p.benefit, category: p.category};
+}
+
+function bonusForLevel(b, v, level){
+  const rates = {1:0.05, 2:0.25, 3:0.10};
+  const count = Math.pow(b, level);
+  const ip = count * v;
+  return {count, ip, bonus: ip * rates[level]};
+}
+
+function fmtEuro(n){
+  return n.toLocaleString('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
+}
+
+function updateSummary(){
+  const {b, v} = state;
+  const oc = ownCost(v);
+  const l1 = bonusForLevel(b,oc.ip,1);
+  const l2 = bonusForLevel(b,oc.ip,2);
+  const l3 = bonusForLevel(b,oc.ip,3);
+  const totalBonus = l1.bonus + l2.bonus + l3.bonus;
+
+  document.getElementById('l1-count').textContent = l1.count + ' Partner';
+  document.getElementById('l1-detail').innerHTML = l1.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l1.bonus);
+  document.getElementById('l2-count').textContent = l2.count + ' Partner';
+  document.getElementById('l2-detail').innerHTML = l2.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l2.bonus);
+  document.getElementById('l3-count').textContent = l3.count + ' Partner';
+  document.getElementById('l3-detail').innerHTML = l3.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l3.bonus);
+
+  document.getElementById('own-eyebrow').textContent = 'Beispielprodukt · ' + oc.category;
+  document.getElementById('own-product-label').textContent = oc.label;
+  document.getElementById('own-benefit').textContent = oc.benefit;
+  const versandText = oc.shipping === 0
+    ? 'Versand: kostenfrei (ab 80 IP)'
+    : ('+ Versand ' + fmtEuro(oc.shipping));
+  document.getElementById('own-detail').innerHTML =
+    oc.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP · Produktpreis ' + fmtEuro(oc.product) + '<br>' +
+    versandText + '<br><strong>Dein Invest: ' + fmtEuro(oc.total) + '</strong>';
+
+  document.getElementById('total-bonus').textContent = fmtEuro(totalBonus);
+}
+
+// ---- Tree drawing ----
+function polar(angleDeg, radius, ox, oy){
+  const rad = (angleDeg - 90) * Math.PI/180;
+  return { x: ox + radius*Math.cos(rad), y: oy + radius*Math.sin(rad) };
+}
+
+function buildTree(b){
+  const nodes = [];
+  const edges = [];
+  // sizing depends on branching factor
+  const isWide = b >= 6;
+  const W = isWide ? 1000 : 900;
+  const H = isWide ? 620 : 560;
+  const originX = W/2, originY = H - 30;
+  const R = [0, 150, 280, isWide ? 400 : 400];
+
+  const root = { x: originX, y: originY, level:0, r:11 };
+  nodes.push(root);
+
+  const span1 = b===3 ? 120 : 150;
+  const level1angles = [];
+  for(let i=0;i<b;i++){
+    const angle = b===1 ? 0 : -span1/2 + i*(span1/(b-1));
+    level1angles.push(angle);
+    const p = polar(angle, R[1], originX, originY);
+    nodes.push({x:p.x, y:p.y, level:1, r: isWide?8:10, angle});
+    edges.push({x1:root.x,y1:root.y,x2:p.x,y2:p.y,level:1});
+  }
+
+  const level2angles = [];
+  const subSpan2 = span1/b * (isWide? 0.85 : 0.95);
+  level1angles.forEach((a1, idx)=>{
+    const parentPt = nodes[1+idx];
+    for(let j=0;j<b;j++){
+      const angle = b===1? a1 : a1 - subSpan2/2 + j*(subSpan2/(b-1));
+      level2angles.push({angle, parentIdx: idx});
+      const p = polar(angle, R[2], originX, originY);
+      nodes.push({x:p.x,y:p.y, level:2, r: isWide?4.5:6, angle});
+      edges.push({x1:parentPt.x,y1:parentPt.y,x2:p.x,y2:p.y,level:2});
+    }
+  });
+
+  const subSpan3 = subSpan2/b * (isWide? 0.85: 0.95);
+  const level2NodesStart = 1+b;
+  level2angles.forEach((entry, idx)=>{
+    const parentPt = nodes[level2NodesStart+idx];
+    for(let k=0;k<b;k++){
+      const angle = b===1? entry.angle : entry.angle - subSpan3/2 + k*(subSpan3/(b-1));
+      const p = polar(angle, R[3], originX, originY);
+      nodes.push({x:p.x,y:p.y, level:3, r: isWide?1.8:3.2});
+      edges.push({x1:parentPt.x,y1:parentPt.y,x2:p.x,y2:p.y,level:3});
+    }
+  });
+
+  return {nodes, edges, W, H};
+}
+
+function curvePath(x1,y1,x2,y2){
+  const mx = (x1+x2)/2, my = (y1+y2)/2 - Math.abs(y1-y2)*0.15;
+  return `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
+}
+
+function renderTree(){
+  const {nodes, edges, W, H} = buildTree(state.b);
+  const svg = document.getElementById('tree');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.removeAttribute('width');
+  svg.removeAttribute('height');
+  svg.style.width = '100%';
+  svg.style.height = 'auto';
+  svg.style.display = 'block';
+
+  const colors = {0:'#c47b2b', 1:'#3a5e3f', 2:'#6f9a76', 3:'#b9d4bd'};
+  const edgeColors = {1:'#c9bfa5', 2:'#d7e4d8', 3:'#e8efe9'};
+
+  let svgContent = '';
+  edges.forEach(e=>{
+    svgContent += `<path d="${curvePath(e.x1,e.y1,e.x2,e.y2)}" stroke="${edgeColors[e.level]}" stroke-width="${e.level===1?1.6:e.level===2?1.1:0.7}" fill="none"/>`;
+  });
+  nodes.forEach(n=>{
+    svgContent += `<circle cx="${n.x}" cy="${n.y}" r="${n.r}" fill="${colors[n.level]}" stroke="#fff" stroke-width="${n.level<=1?1.5:0.6}"/>`;
+  });
+  // root label
+  svgContent += `<text x="${W/2}" y="${H-8}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="600" font-size="15" fill="#1e1e1a">Du</text>`;
+
+  svg.innerHTML = svgContent;
+}
+
+function refresh(){
+  updateSummary();
+  renderTree();
+}
+
+document.querySelectorAll('.branch-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.branch-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.b = parseInt(btn.dataset.b);
+    refresh();
+  });
+});
+document.querySelectorAll('.vol-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.vol-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.v = btn.dataset.v;
+    refresh();
+  });
+});
+
+refresh();
+</script>
+</body>
+</html>

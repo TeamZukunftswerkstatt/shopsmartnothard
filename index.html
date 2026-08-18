@@ -20,7 +20,7 @@
     background:var(--creme);
     color:var(--schwarz);
     font-family:'DM Sans', sans-serif;
-    padding:20px 14px 60px;
+    padding:20px 14px 84px;
   }
   .wrap{max-width:720px;margin:0 auto;}
   h1{
@@ -31,11 +31,17 @@
     font-size:28px;
     margin:0 0 4px;
     letter-spacing:0.2px;
+    text-align:center;
+  }
+  .page-sub{
+    font-size:13px;
+    color:#6b6b62;
+    margin-bottom:20px;
+    text-align:center;
   }
   .sub{
     font-size:13px;
     color:#6b6b62;
-    margin-bottom:20px;
   }
   .intro-text{
     font-size:13.5px;
@@ -46,28 +52,24 @@
     padding:14px 16px;
     margin-bottom:16px;
   }
-  .intro-hint{
-    font-size:12.5px;
-    line-height:1.5;
-    color:#8a8577;
-    font-style:italic;
-    margin-bottom:14px;
+  .scroll-hint{
+    display:flex;
+    justify-content:center;
+    margin:4px 0 18px;
   }
-  .section-divider{
-    text-align:center;
-    font-family:'Cormorant Garamond',serif;
-    font-style:italic;
-    font-size:15px;
-    color:var(--dunkelgruen);
-    margin:24px 0 4px;
-    padding-top:16px;
-    border-top:1px solid #e2ddd0;
+  .scroll-hint svg{
+    animation:bounce 1.6s infinite;
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0);opacity:.5;}
+    50%{transform:translateY(6px);opacity:1;}
   }
   .controls{
     display:flex;
     flex-wrap:wrap;
     gap:10px;
     margin-bottom:22px;
+    justify-content:center;
   }
   .group{
     display:flex;
@@ -76,6 +78,8 @@
     padding:4px;
     border:1px solid #e2ddd0;
     gap:3px;
+    flex-wrap:wrap;
+    justify-content:center;
   }
   .group button{
     border:none;
@@ -93,27 +97,13 @@
     background:var(--dunkelgruen);
     color:#fff;
   }
-  .group button.kombi-btn{
-    border:1.5px solid var(--gold);
-  }
-  .group button.kombi-btn.active{
-    border-color:var(--dunkelgruen);
-  }
-  .group-label{
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    color:#8a8577;
-    align-self:center;
-    padding-right:6px;
-  }
   .canvas-card{
     background:#fff;
     border-radius:16px;
     border:1px solid #e2ddd0;
     padding:8px 4px 4px;
     overflow-x:auto;
-    margin-bottom:20px;
+    margin-bottom:16px;
   }
   svg{display:block;margin:0 auto;}
   .summary{
@@ -121,6 +111,7 @@
     grid-template-columns:1fr 1fr 1fr;
     gap:8px;
     margin-bottom:16px;
+    text-align:center;
   }
   .card{
     background:#fff;
@@ -147,13 +138,9 @@
     background:var(--dunkelgruen);
     color:var(--creme);
     border-radius:14px;
-    padding:18px 18px;
+    padding:22px 18px;
     margin-bottom:16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
+    text-align:center;
   }
   .total-card .t-label{
     font-size:12px;
@@ -165,34 +152,25 @@
     font-family:'Cormorant Garamond',serif;
     font-style:italic;
     font-weight:600;
-    font-size:34px;
+    font-size:38px;
     color:var(--gold);
   }
   .footnote{
-    font-size:11.5px;
+    font-size:11px;
     color:#8a8577;
     line-height:1.5;
     border-top:1px solid #e2ddd0;
-    padding-top:14px;
-    margin-top:6px;
-  }
-  .badge{
-    display:inline-block;
-    font-size:11px;
-    font-weight:600;
-    padding:3px 9px;
-    border-radius:20px;
-    background:var(--hellgruen);
-    color:var(--dunkelgruen);
-    margin-left:6px;
+    padding-top:12px;
+    margin-top:16px;
   }
   .legend{
     display:flex;
-    gap:16px;
+    gap:14px;
     font-size:11px;
     color:#6b6b62;
-    margin:10px 4px 0;
+    margin:10px 4px 16px;
     flex-wrap:wrap;
+    justify-content:center;
   }
   .legend span{display:inline-flex;align-items:center;gap:5px;}
   .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
@@ -209,6 +187,7 @@
     font-weight:600;
     font-size:22px;
     margin-bottom:10px;
+    text-align:center;
   }
   .closing-text{
     font-size:13.5px;
@@ -220,12 +199,42 @@
     font-style:italic;
     font-size:15.5px;
   }
+  .sticky-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:var(--dunkelgruen);
+    color:var(--creme);
+    padding:10px 16px;
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+    gap:8px;
+    box-shadow:0 -4px 14px rgba(0,0,0,0.12);
+    z-index:100;
+    font-family:'DM Sans',sans-serif;
+  }
+  .sticky-bar .s-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    opacity:.85;
+  }
+  .sticky-bar .s-value{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:20px;
+    color:var(--gold);
+    transition:all .3s ease;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Shop smart, not hard &mdash; Einkaufen mit Mehrwert</h1>
-  <div class="sub">Ein kleines Rechenspiel zum Ausprobieren</div>
+  <div class="page-sub">Ein kleines Rechenspiel zum Ausprobieren</div>
 
   <div class="intro-text">
     Was wäre, wenn du fürs Einkaufen bezahlt würdest?!<br><br>
@@ -235,28 +244,38 @@
     Klingt nach "Kunden werben Kunden"?<br>
     Jein, dort gibt's ein einmaliges Dankeschön.<br>
     Und bei Payback sparst du nur auf künftige Einkäufe.<br>
-    Hier beim Empfehlungsmarketing bekommst du wirklich monatliche Umsatzbeteiligungen &mdash; bares Geld zur freien Verfügung, einfach durch Einkaufen und Erzählen.<br><br>
-    Probier's doch gleich aus, wie hoch deine Umsatzbeteiligung sein könnte!<br><br>
-    Welcher Bereich interessiert dich?<br>
-    Was bringt dir einen echten Mehrwert, wo würdest du gerne einkaufen?<br>
-    Unten kannst du schon mal ein paar Beispiele auswählen &mdash; im ganzen Sortiment gibt's natürlich noch viel, viel mehr.<br><br>
-    Und wechsle zusätzlich einfach zwischen den Buttons "3 Personen" und "6 Personen"<br>
-    und sieh dir den faszinierenden Unterschied an, was passiert, wenn entweder drei oder sechs Freunde durch deine Empfehlung einkaufen und sich das ebenso dupliziert!<br><br>
-    Natürlich ein hypothetisches Beispiel &mdash; aber genau darin steckt der besondere Zauber:<br>
+    Hier beim Empfehlungsmarketing bekommst du wirklich monatliche Umsatzbeteiligungen &mdash;<br>
+    bares Geld zur freien Verfügung, einfach durch Einkaufen und Erzählen.<br><br>
+    Und wenn sich das immer weiter dupliziert &mdash; viele Menschen, die die Idee gut finden, erzählen sie einfach weiter &mdash; wächst daraus dein eigenes Einkaufsnetzwerk.<br><br>
+    Probier's doch gleich aus, wie hoch deine Umsatzbeteiligung sein könnte!
+  </div>
+
+  <div class="scroll-hint">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a8577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+
+  <div class="intro-text" style="background:#fff;border:1px solid #e2ddd0;">
+    Wähl unten einen Beispielbereich aus dem Sortiment über die Buttons aus &mdash; die Auswahl ist in echt natürlich noch viel, viel größer.<br>
+    Und wechsle zusätzlich zwischen den Buttons "3 Personen" und "6 Personen".<br><br>
+    Sieh dir den faszinierenden Unterschied an, was passiert, wenn aus drei mit der Zeit sechs Personen werden, die durch deine Empfehlung einkaufen und sich das bei ihnen ebenso dupliziert! Natürlich ein hypothetisches Beispiel &mdash; aber genau darin steckt der besondere Zauber:<br>
     Die Zahl der Menschen, die über deine direkte Empfehlung einkaufen, verdoppelt sich nur.<br>
-    Wenn sich diese Verdopplung aber von Ebene zu Ebene fortsetzt und sich die Einkäuferzahl dadurch insgesamt vervielfacht, beträgt die Umsatzbeteiligung am Ende deutlich mehr als nur das Doppelte.<br><br>
+    Die Zahl der Einkäufer insgesamt vervielfacht sich aber, hier im Beispiel über drei Ebenen, wodurch die Umsatzbeteiligung am Ende deutlich mehr beträgt als nur das Doppelte.<br><br>
     Klick dich einfach durch die Buttons, schau dir an, wie sich dein Einkaufsnetzwerk im Baumdiagramm unten verändert &mdash; und lass dich von den Zahlen überraschen.
   </div>
 
   <div class="controls">
     <div style="text-align:center;width:100%;">
-      <div class="group" style="flex-wrap:wrap;justify-content:center;display:inline-flex;">
-        <button data-v="basics" class="vol-btn active">Wohlbefinden</button>
-        <button data-v="sport" class="vol-btn">Sport</button>
-        <button data-v="beauty" class="vol-btn">Schönheit</button>
-        <button data-v="kids" class="vol-btn">Kinder</button>
-        <button data-v="energie" class="vol-btn">Energie</button>
-        <button data-v="hausapo" class="vol-btn">Hausapotheke</button>
+      <div class="group">
+        <button data-v="basics" class="vol-btn">🌿 Balance</button>
+        <button data-v="sport" class="vol-btn">💪 Sport</button>
+        <button data-v="beauty" class="vol-btn">✨ Schönheit</button>
+        <button data-v="kids" class="vol-btn">🧒 Kinder</button>
+        <button data-v="energie" class="vol-btn">⚡ Energie</button>
+        <button data-v="hausapo" class="vol-btn">🩹 Hausapotheke</button>
+        <button data-v="tiere" class="vol-btn">🐾 Tiere</button>
+        <button data-v="stoffwechsel" class="vol-btn">🔥 Stoffwechsel</button>
       </div>
     </div>
     <div style="text-align:center;width:100%;margin-top:10px;">
@@ -268,29 +287,29 @@
   </div>
 
   <div class="card gold" style="margin-bottom:16px;">
-    <div class="label" id="own-eyebrow">Beispielprodukt &middot; Wohlbefinden</div>
-    <div class="value" id="own-product-label">Aloe Vera Caps</div>
-    <div class="sub" id="own-benefit" style="margin-top:4px;font-size:13px;font-style:italic;color:#6b6b62;">Für dein Wohlbefinden von innen – dein Einstieg in die Basisversorgung</div>
-    <div class="sub" id="own-detail" style="margin-top:8px;font-size:13px;line-height:1.6;">40 IP · Produktpreis 53,25 €<br>+ Versand 4,17 €<br><strong>Dein Invest: 57,42 €</strong></div>
+    <div class="label" id="own-eyebrow">👆 Wähl oben einen Bereich</div>
+    <div class="value" id="own-product-label">Noch nichts ausgewählt</div>
+    <div class="sub" id="own-benefit" style="margin-top:4px;font-size:13px;font-style:italic;color:#6b6b62;">Tipp deinen ersten Bereich an, um zu starten.</div>
+    <div class="sub" id="own-detail" style="margin-top:8px;font-size:13px;line-height:1.6;"></div>
     <div class="sub" style="margin-top:8px;font-size:12px;font-style:italic;color:#8a8577;">IP = Internationale Punkte, eine interne Verrechnungswährung für die Umsatzbeteiligung &mdash; unabhängig vom tatsächlichen Produktpreis, der bei gleicher IP-Zahl je nach Produkt leicht variieren kann.</div>
     <div class="sub" style="margin-top:8px;font-size:12px;font-style:italic;color:#8a8577;">Annahme im Beispiel:<br>Alle im Freundeskreis bestellen das gleiche Produkt wie du.</div>
   </div>
 
   <div class="summary" style="margin-bottom:16px;">
-    <div class="card">
-      <div class="label">Ebene 1</div>
-      <div class="value" id="l1-count">3 Partner</div>
-      <div class="sub" id="l1-detail" style="margin-top:2px;font-size:12px;"></div>
+    <div class="card" style="padding:10px 10px;">
+      <div class="label" style="font-size:10px;color:#3a5e3f;">Ebene 1<br>5%</div>
+      <div class="sub" id="l1-people" style="font-size:11px;color:#8a8577;margin-top:2px;line-height:1.5;"></div>
+      <div class="value" id="l1-bonus" style="font-size:18px;margin-top:3px;color:#3a5e3f;"></div>
     </div>
-    <div class="card">
-      <div class="label">Ebene 2</div>
-      <div class="value" id="l2-count">9 Partner</div>
-      <div class="sub" id="l2-detail" style="margin-top:2px;font-size:12px;"></div>
+    <div class="card" style="padding:10px 10px;">
+      <div class="label" style="font-size:10px;color:#b5651d;">Ebene 2<br>25%</div>
+      <div class="sub" id="l2-people" style="font-size:11px;color:#8a8577;margin-top:2px;line-height:1.5;"></div>
+      <div class="value" id="l2-bonus" style="font-size:18px;margin-top:3px;color:#b5651d;"></div>
     </div>
-    <div class="card">
-      <div class="label">Ebene 3</div>
-      <div class="value" id="l3-count">27 Partner</div>
-      <div class="sub" id="l3-detail" style="margin-top:2px;font-size:12px;"></div>
+    <div class="card" style="padding:10px 10px;">
+      <div class="label" style="font-size:10px;color:#7d8ba1;">Ebene 3<br>10%</div>
+      <div class="sub" id="l3-people" style="font-size:11px;color:#8a8577;margin-top:2px;line-height:1.5;"></div>
+      <div class="value" id="l3-bonus" style="font-size:18px;margin-top:3px;color:#7d8ba1;"></div>
     </div>
   </div>
 
@@ -301,14 +320,14 @@
   <div class="legend">
     <span><span class="dot" style="background:#c47b2b"></span>Du (Start)</span>
     <span><span class="dot" style="background:#3a5e3f"></span>Ebene 1 &middot; 5%</span>
-    <span><span class="dot" style="background:#6f9a76"></span>Ebene 2 &middot; 25%</span>
-    <span><span class="dot" style="background:#b9d4bd"></span>Ebene 3 &middot; 10%</span>
+    <span><span class="dot" style="background:#b5651d"></span>Ebene 2 &middot; 25%</span>
+    <span><span class="dot" style="background:#7d8ba1"></span>Ebene 3 &middot; 10%</span>
   </div>
 
   <div class="total-card" style="justify-content:center;text-align:center;margin-top:20px;">
     <div>
       <div class="t-label">Deine Umsatzbeteiligung / Monat</div>
-      <div class="t-value" id="total-bonus">204 €</div>
+      <div class="t-value" id="total-bonus">&ndash;</div>
     </div>
   </div>
 
@@ -316,11 +335,11 @@
     <div class="label">Und wenn die Einkaufsmenge steigt?</div>
     <div style="font-size:13.5px;line-height:1.6;margin-top:6px;">
       Als Produktliebhaber nutzt du vielleicht irgendwann mehrere Bereiche des Sortiments.<br>
-      Nehmen wir als Beispiel die Bereiche Wohlbefinden und Schönheit:<br>
-      Dann landest du bei 90 IP statt 40 oder 50 &mdash; macht 118,25 € Invest.<br><br>
-      Und wenn dein ganzes Einkaufsnetzwerk das genauso macht &mdash; rein hypothetisch, als Beispiel &mdash;, wächst auch die Umsatzbeteiligung linear mit:<br>
-      Bei 3 Personen werden aus 204 € dann 459 €,<br>
-      bei 6 Personen aus 1.236 € sogar 2.781 €.<br><br>
+      Nehmen wir als Beispiel die Bereiche Balance und Energie zusammen:<br>
+      Beide haben 40 IP, du landest also bei 80 IP &mdash; macht 132,25 € Invest, dabei automatisch versandkostenfrei.<br><br>
+      Und wenn dein ganzes Einkaufsnetzwerk das genauso macht &mdash; rein hypothetisch, als Beispiel &mdash;, verdoppelt sich auch die Umsatzbeteiligung:<br>
+      Bei 3 Personen werden aus 204 € dann 408 €,<br>
+      bei 6 Personen aus 1.236 € dann 2.472 €.<br><br>
       Und es gibt keine Obergrenze &mdash;<br>
       weder bei der Anzahl der Menschen, die in deinem Einkaufsnetzwerk bestellen, noch bei der Menge, die sie bestellen.
     </div>
@@ -334,42 +353,51 @@
       Einfach einkaufen mit Mehrwert.
     </div>
     <div class="closing-text" style="margin-top:12px;">
-      Du bekommst sofort echte Premiumprodukte &mdash; für Beauty, Sport, Hausapotheke oder die Kleinen,<br>
-      mit direktem Nutzen:<br>
-      Energieschub, gutes Hautgefühl, mehr Balance im Alltag.<br><br>
+      Du bekommst sofort echte Premiumprodukte, mit direktem Nutzen für dich: mehr Energie, gepflegte Haut oder einfach mehr Balance im Alltag.<br>
+      Du entscheidest.<br><br>
       Und dazu, wenn dein Einkaufsnetzwerk wächst, jeden Monat eine Umsatzbeteiligung, über die du frei verfügst:<br>
       sei es für den Extra-Urlaub, die neue Terrasse oder das Kürzen deiner Arbeitszeit.
     </div>
     <div class="closing-text" style="margin-top:12px;">
+      Wie oft kaufen wir sonst online einfach drauflos, nur wegen geschickter Werbung?<br>
+      Meistens profitiert davon nur die große Firma dahinter &mdash; hier profitierst du mit.<br><br>
       Worauf wartest du noch?<br>
       Leg dir dein Kundenkonto an &mdash; und teil dein neues Wissen mit deinen Freunden, sodass auch sie von einem eigenen Einkaufsnetzwerk profitieren können!
     </div>
-    <div class="closing-text" style="margin-top:16px;font-size:15px;">
-      <em>Shop smart, not hard</em> 😉
+    <div class="closing-text" style="margin-top:16px;text-align:center;">
+      <em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:22px;">Shop smart, not hard</em> 😉
     </div>
   </div>
 
   <div class="footnote">
-    Voraussetzung für eine Bonuszahlung: mind. 40 IP Eigenbestellung im jeweiligen Monat &mdash; keine Bestellpflicht. Nur in Monaten, in denen du selbst bestellst, bekommst du auch die Umsatzbeteiligung aus deinem Einkaufsnetzwerk; ohne eigene Bestellung entfällt sie für diesen Monat, im nächsten Monat mit Bestellung greift sie wieder. Modellrechnung, kein garantiertes Ergebnis: Sie unterstellt zusätzlich, dass wirklich jede Person in jeder Ebene der Downline aktiv bestellt und die Struktur sich vollständig dupliziert &mdash; das ist der Idealfall, nicht der Durchschnitt. 1 IP = 1 € (direkte Umrechnung). Bonus: Ebene 1 = 5%, Ebene 2 = 25%, Ebene 3 = 10% (Ebene-3-Bonus setzt 3 aktive Beine voraus). Versand: unter 80 IP pauschal 4,17 €, ab 80 IP kostenfrei. Preise Stand Mai 2026.
+    Voraussetzung für eine Bonuszahlung: mind. 40 IP Eigenbestellung im jeweiligen Monat &mdash; keine Bestellpflicht. Nur in Monaten, in denen du selbst bestellst, bekommst du auch die Umsatzbeteiligung aus deinem Einkaufsnetzwerk; ohne eigene Bestellung entfällt sie für diesen Monat, im nächsten Monat mit Bestellung greift sie wieder. Modellrechnung, kein garantiertes Ergebnis: Sie unterstellt zusätzlich, dass wirklich jede Person in jeder Ebene der Downline aktiv bestellt und die Struktur sich vollständig dupliziert &mdash; das ist der Idealfall, nicht der Durchschnitt. 1 IP = 1 € (direkte Umrechnung). Bonus: Ebene 1 = 5%, Ebene 2 = 25%, Ebene 3 = 10% (Ebene-3-Bonus setzt 3 aktive Beine voraus). Versand: unter 80 IP pauschal 4,17 €, ab 80 IP kostenfrei. Auf alle Produkte gilt eine 30-Tage-Geld-zurück-Garantie. Preise Stand Mai 2026.
   </div>
+</div>
+
+<div class="sticky-bar">
+  <span class="s-label">Beispiel · Umsatzbeteiligung/Monat:</span>
+  <span class="s-value" id="sticky-bonus">&ndash;</span>
 </div>
 
 <script>
 const PRODUCTS = {
-  basics:  { label: 'Aloe Vera Caps',                ip: 40.00, price: 53.25, benefit: 'Ein Klassiker der Basisversorgung – seit Jahren geschätzt als sanfter Alltagsbegleiter', category: 'Wohlbefinden' },
-  sport:   { label: 'Be Focused',                    ip: 47.50, price: 76.00, benefit: 'Für Energie und Fokus in aktiven Trainingsphasen', category: 'Sport' },
-  beauty:  { label: 'FY Skin Formula',                ip: 50.00, price: 65.00, benefit: 'Für ein gepflegtes Hautbild von innen', category: 'Schönheit' },
-  kids:    { label: 'Yummies + mangOmega',            ip: 45.75, price: 83.00, benefit: 'Kindgerechte Nährstoffversorgung – lecker verpackt', category: 'Kinder' },
-  energie: { label: 'Smart Bar + Real NRG',           ip: 40.00, price: 79.00, benefit: 'Für den kleinen Energieschub im Alltag', category: 'Energie' },
-  hausapo: { label: 'Zinc Boost + Vitamin-C-Plus',    ip: 40.75, price: 78.50, benefit: 'Für deine Hausapotheke – gut gerüstet', category: 'Hausapotheke' }
+  basics:  { label: 'Aloe Vera Caps',                ip: 40.00, price: 53.25, benefit: 'Für dein Gleichgewicht von innen', category: 'Balance', icon: '🌿' },
+  sport:   { label: 'Be Focused',                    ip: 47.50, price: 76.00, benefit: 'Für Energie und Fokus in aktiven Trainingsphasen', category: 'Sport', icon: '💪' },
+  beauty:  { label: 'FY Skin Formula',                ip: 50.00, price: 65.00, benefit: 'Für ein gepflegtes Hautbild von innen', category: 'Schönheit', icon: '✨' },
+  kids:    { label: 'Yummies + mangOmega',            ip: 45.75, price: 83.00, benefit: 'Für kindgerechte Nährstoffversorgung – lecker verpackt', category: 'Kinder', icon: '🧒' },
+  energie: { label: 'Smart Bar + Real NRG',           ip: 40.00, price: 79.00, benefit: 'Für den kleinen Energieschub im Alltag', category: 'Energie', icon: '⚡' },
+  hausapo: { label: 'Zinc Boost + Vitamin-C-Plus',    ip: 40.75, price: 78.50, benefit: 'Für deine Hausapotheke – gut gerüstet', category: 'Hausapotheke', icon: '🩹' },
+  tiere:   { label: 'Pets Care & Comfort + Calm + Move', ip: 46.50, price: 81.00, benefit: 'Für das Wohlbefinden deines Hundes – innen und außen', category: 'Tiere', icon: '🐾' },
+  stoffwechsel: { label: 'Triple Protein Shake + Enerxan + Gold Formula', ip: 66.75, price: 130.50, benefit: 'Für deinen Stoffwechsel und dein Gewichtsmanagement', category: 'Stoffwechsel', icon: '🔥' }
 };
 
-const state = { b: 3, v: 'basics' };
+const state = { b: 3, v: null };
 
 function ownCost(key){
+  if(!key) return null;
   const p = PRODUCTS[key];
   const shipping = p.ip >= 80 ? 0 : 4.17;
-  return {product: p.price, shipping, total: p.price + shipping, ip: p.ip, label: p.label, benefit: p.benefit, category: p.category};
+  return {product: p.price, shipping, total: p.price + shipping, ip: p.ip, label: p.label, benefit: p.benefit, category: p.category, icon: p.icon};
 }
 
 function bonusForLevel(b, v, level){
@@ -384,21 +412,36 @@ function fmtEuro(n){
 }
 
 function updateSummary(){
-  const {b, v} = state;
-  const oc = ownCost(v);
+  const {b} = state;
+  const oc = ownCost(state.v);
+
+  if(!oc){
+    document.getElementById('own-eyebrow').textContent = '👆 Wähl oben einen Bereich';
+    document.getElementById('own-product-label').textContent = 'Noch nichts ausgewählt';
+    document.getElementById('own-benefit').textContent = 'Tipp deinen ersten Bereich an, um zu starten.';
+    document.getElementById('own-detail').innerHTML = '';
+    ['l1','l2','l3'].forEach(l=>{
+      document.getElementById(l+'-people').textContent = '–';
+      document.getElementById(l+'-bonus').textContent = '–';
+    });
+    document.getElementById('total-bonus').textContent = '–';
+    document.getElementById('sticky-bonus').textContent = '–';
+    return;
+  }
+
   const l1 = bonusForLevel(b,oc.ip,1);
   const l2 = bonusForLevel(b,oc.ip,2);
   const l3 = bonusForLevel(b,oc.ip,3);
   const totalBonus = l1.bonus + l2.bonus + l3.bonus;
 
-  document.getElementById('l1-count').textContent = l1.count + ' Partner';
-  document.getElementById('l1-detail').innerHTML = l1.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l1.bonus);
-  document.getElementById('l2-count').textContent = l2.count + ' Partner';
-  document.getElementById('l2-detail').innerHTML = l2.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l2.bonus);
-  document.getElementById('l3-count').textContent = l3.count + ' Partner';
-  document.getElementById('l3-detail').innerHTML = l3.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP<br>→ ' + fmtEuro(l3.bonus);
+  document.getElementById('l1-people').innerHTML = l1.count + ' Personen<br>' + l1.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP';
+  document.getElementById('l1-bonus').textContent = fmtEuro(l1.bonus);
+  document.getElementById('l2-people').innerHTML = l2.count + ' Personen<br>' + l2.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP';
+  document.getElementById('l2-bonus').textContent = fmtEuro(l2.bonus);
+  document.getElementById('l3-people').innerHTML = l3.count + ' Personen<br>' + l3.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP';
+  document.getElementById('l3-bonus').textContent = fmtEuro(l3.bonus);
 
-  document.getElementById('own-eyebrow').textContent = 'Beispielprodukt · ' + oc.category;
+  document.getElementById('own-eyebrow').textContent = oc.icon + ' Beispielprodukt · ' + oc.category;
   document.getElementById('own-product-label').textContent = oc.label;
   document.getElementById('own-benefit').textContent = oc.benefit;
   const versandText = oc.shipping === 0
@@ -408,7 +451,26 @@ function updateSummary(){
     oc.ip.toLocaleString('de-DE',{maximumFractionDigits:2}) + ' IP · Produktpreis ' + fmtEuro(oc.product) + '<br>' +
     versandText + '<br><strong>Dein Invest: ' + fmtEuro(oc.total) + '</strong>';
 
-  document.getElementById('total-bonus').textContent = fmtEuro(totalBonus);
+  animateNumber(document.getElementById('total-bonus'), totalBonus);
+  animateNumber(document.getElementById('sticky-bonus'), totalBonus);
+}
+
+function animateNumber(el, target){
+  const start = parseFloat(el.dataset.raw || '0') || 0;
+  const duration = 450;
+  const startTime = performance.now();
+  function step(now){
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = start + (target - start) * eased;
+    el.textContent = fmtEuro(current);
+    if(progress < 1){
+      requestAnimationFrame(step);
+    } else {
+      el.dataset.raw = target;
+    }
+  }
+  requestAnimationFrame(step);
 }
 
 // ---- Tree drawing ----
@@ -420,7 +482,6 @@ function polar(angleDeg, radius, ox, oy){
 function buildTree(b){
   const nodes = [];
   const edges = [];
-  // sizing depends on branching factor
   const isWide = b >= 6;
   const W = isWide ? 1000 : 900;
   const H = isWide ? 620 : 560;
@@ -483,8 +544,8 @@ function renderTree(){
   svg.style.height = 'auto';
   svg.style.display = 'block';
 
-  const colors = {0:'#c47b2b', 1:'#3a5e3f', 2:'#6f9a76', 3:'#b9d4bd'};
-  const edgeColors = {1:'#c9bfa5', 2:'#d7e4d8', 3:'#e8efe9'};
+  const colors = {0:'#c47b2b', 1:'#3a5e3f', 2:'#b5651d', 3:'#7d8ba1'};
+  const edgeColors = {1:'#c9bfa5', 2:'#ddbfa0', 3:'#ccd2da'};
 
   let svgContent = '';
   edges.forEach(e=>{
@@ -493,7 +554,6 @@ function renderTree(){
   nodes.forEach(n=>{
     svgContent += `<circle cx="${n.x}" cy="${n.y}" r="${n.r}" fill="${colors[n.level]}" stroke="#fff" stroke-width="${n.level<=1?1.5:0.6}"/>`;
   });
-  // root label
   svgContent += `<text x="${W/2}" y="${H-8}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="600" font-size="15" fill="#1e1e1a">Du</text>`;
 
   svg.innerHTML = svgContent;
@@ -506,9 +566,10 @@ function refresh(){
 
 document.querySelectorAll('.branch-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.branch-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
     state.b = parseInt(btn.dataset.b);
+    document.querySelectorAll('.branch-btn').forEach(b=>{
+      b.classList.toggle('active', parseInt(b.dataset.b) === state.b);
+    });
     refresh();
   });
 });
